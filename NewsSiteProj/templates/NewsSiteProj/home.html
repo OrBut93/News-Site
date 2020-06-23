@@ -14,6 +14,7 @@
     <p>{{ post.description}}</p>
     <p>{{ post.category}}</p>
     <img src="{{ post.image.url}}">
+    <a href="{% url 'detail' post.id%}">לפרטים נוספים</a>
 
 {% endfor %}
 </body>
