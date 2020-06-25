@@ -1,39 +1,33 @@
 {% extends 'NewsSiteProj/base.html' %}
 {% block content %}
 
-{% for post in posts %}
+    <div class="card-group">
+        {% for post in posts %}
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <div class="container">
-    <div class="row">
-        <div class="col col-md-3">
-            <div class="card h-100">
-                <h1 class="card-body">{{ post.title}}.</h1>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <p class="card-text">{{ post.description }}</p>
+                            <img src="{{ post.image.url }}" style="width: 10rem;">
+                            <a href="{% url 'detail' post.id %}" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col col-md-9">
-            <div class="card">
-                <h3 class="card-body">{{ post.description}}</h3>>
-            </div>
-            <div class="card">
+            {#            <div class="card" style="width: 18rem;">#}
+            {#                <div class="card-body">#}
+            {#                    <h1 class="card-title">{{ post.title }}</h1>#}
+            {#                    <p class="card-text">{{ post.description }}</p>#}
+            {#                    <img src="{{ post.image.url }}" style="width: 10rem;">#}
+            {#                    <a href="{% url 'detail' post.id %}">לפרטים נוספים</a>#}
+            {#                </div>#}
+            {#            </div>#}
 
-                <img src="{{ post.image.url}}" style="width: 10rem;">
-                <a href="{% url 'detail' post.id%}">לפרטים נוספים</a>
-            </div>
-        </div>
+
+        {% endfor %}
     </div>
-    </div>
-
-{#    <div class="card" style="width: 18rem;">#}
-{#    <div class="card-body">#}
-{#    <h1 class="card-title">{{ post.title}}</h1>#}
-{#    <p class="card-text">{{ post.description}}</p>#}
-{#    <img src="{{ post.image.url}}" style="width: 10rem;">#}
-{#    <a href="{% url 'detail' post.id%}">לפרטים נוספים</a>#}
-{#  </div>#}
-{#</div>#}
-
-{% endfor %}
 
 {% endblock %}
 
