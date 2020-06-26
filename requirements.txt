@@ -1,2 +1,6 @@
 pytz
 psycopg2
+pip~=20.1.1
+setuptools~=47.3.1
+Django~=3.0.7
+PyMySQL~=0.9.3

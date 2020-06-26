@@ -1,33 +1,52 @@
+
+
+
 {% extends 'NewsSiteProj/base.html' %}
+{% load static %}
 {% block content %}
+    {% if user.is_authenticated %}
 
-    <div class="card-group">
-        {% for post in posts %}
+        <h1 id="postTitle" class="font-weight-bold text-center">News</h1>
 
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ post.title }}</h5>
-                            <p class="card-text">{{ post.description }}</p>
-                            <img src="{{ post.image.url }}" style="width: 10rem;">
-                            <a href="{% url 'detail' post.id %}" class="btn btn-primary">Go somewhere</a>
+        <div class="card-group">
+            {% for post in posts %}
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">{{ post.title }}</h2>
+                                <p>{{ post.currentDate }}</p>
+                                <h4>{{ post.description|truncatechars:100 }}</h4>
+                                <img src="{{ post.image.url }}" style="width: 10rem;">
+                                <a href="{% url 'detail' post.id %}" class="btn btn-primary">Go somewhere</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            {#            <div class="card" style="width: 18rem;">#}
-            {#                <div class="card-body">#}
-            {#                    <h1 class="card-title">{{ post.title }}</h1>#}
-            {#                    <p class="card-text">{{ post.description }}</p>#}
-            {#                    <img src="{{ post.image.url }}" style="width: 10rem;">#}
-            {#                    <a href="{% url 'detail' post.id %}">לפרטים נוספים</a>#}
-            {#                </div>#}
-            {#            </div>#}
+                {#            <div class="card" style="width: 18rem;">#}
+                {#                <div class="card-body">#}
+                {#                    <h1 class="card-title">{{ post.title }}</h1>#}
+                {#                    <p class="card-text">{{ post.description }}</p>#}
+                {#                    <img src="{{ post.image.url }}" style="width: 10rem;">#}
+                {#                    <a href="{% url 'detail' post.id %}">לפרטים נוספים</a>#}
+                {#                </div>#}
+                {#            </div>#}
 
 
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+
+
+    {% else %}:
+        <div>
+            <h1>You have to Login/Sign-Up to see the News!</h1>
+        </div>
+
+
+    {% endif %}
+
+
 
 {% endblock %}
 
