@@ -2,10 +2,10 @@
 
 {% extends 'NewsSiteProj/base.html' %}
 {% block content %}
-    {{ post.title }}
-    {{ post.description }}
-    <img src="{{ post.image.url }}">
-
-
+    <div class="detail">
+        <h4>{{ post.title }}</h4>
+        <h6>{{ post.currentDate }}, {{ post.category.name }}</h6>
+        <h6>{{ post.description }}</h6>
+    </div>
 
 {% endblock %}
