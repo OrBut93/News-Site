@@ -7,6 +7,7 @@
     color: dodgerblue !important;
 }
 body {
+    background: #777777;
     font-family: 'Lato', sans-serif;
 }
 
@@ -22,4 +23,13 @@ body {
     #blogdetailtitle {
         font-size: 5rem;
     }
+}
+/*Home*/
+.filterBox{
+    margin-top: 3rem;
+}
+
+.card-group .row .col-sm-12 .card .card-body{
+   width: 100%;
+    height: 100%;
 }
