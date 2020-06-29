@@ -37,7 +37,7 @@
             <select id="category" class="form-control" name="category">
                 <option selected>Choose...</option>
                 {% for cat in categories %}
-                    <option value="{{ cat }}">{{ cat }}</option>
+                    <option value="{{ cat }}">{{ cat.name }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -51,9 +51,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <h2 class="card-title">{{ post.title }}</h2>
-                                <p>{{ post.currentDate }}, {{ post.category.name }} </p>
+                                <p>{{ post.currentDate }}, {{ post.category.name }}</p>
 
                                 <h4>{{ post.description|truncatechars:100 }}</h4>
+                                <h2 class="card-title">{{ post.bla }}</h2>
+
                                 <a href="{% url 'detail' post.id %}" class="btn btn-primary">For more</a>
                             </div>
                         </div>
