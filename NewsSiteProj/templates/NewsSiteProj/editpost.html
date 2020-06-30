@@ -2,17 +2,17 @@
 {% block content %}
     {{ error }}
     <div class="editpost">
-        <h4>Edit Post</h4>
+        <h2>Edit Post</h2>
 
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Save</button>
+            <button class="create_btn" type="submit">Save</button>
         </form>
-
+        <br>
         <form method="POST" action="{% url 'removepost' post.id %}">
             {% csrf_token %}
-            <button type="submit">Remove</button>
+            <button class="create_btn" type="submit">Remove</button>
         </form>
     </div>
 

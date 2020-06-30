@@ -1,13 +1,14 @@
 {% extends 'NewsSiteProj/base.html' %}
 {% block content %}
-    <h1>Add New Category</h1>
-    <h2>{{ error }}</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">create</button>
-    </form>
-
+    <div class="create_category">
+        <h2>Add New Category</h2>
+        <h2>{{ error }}</h2>
+        <form class="create_form" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="create_btn" type="submit">create</button>
+        </form>
+    </div>
 
 {% endblock %}
 
