@@ -1,13 +1,15 @@
 {% extends 'NewsSiteProj/base.html' %}
 {% block content %}
-    <h1>Sign Up</h1>
-    <h2>{{ error }}</h2>
-    <form method="POST">
-        {% csrf_token %}
+    <div class="signup_page">
+        <h1>Sign Up</h1>
+        <h2>{{ error }}</h2>
+        <form method="POST">
+            {% csrf_token %}
 
-        {{ form.as_p }}
-        <button type="submit">sign up</button>
-    </form>
+            {{ form.as_p }}
+            <button type="submit">sign up</button>
+        </form>
+    </div>
 {% endblock %}
 
 

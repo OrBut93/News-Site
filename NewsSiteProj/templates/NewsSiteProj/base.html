@@ -62,11 +62,13 @@
         <div class="logoutbtn">
             {% if user.is_authenticated %}
                 <div class="row">
-                Hello {{ user.username }} !
+                <div class="hello_user">
+                    Hello {{ user.username }} !
+                </div>
 
                 <form action="{% url 'logoutuser' %}" method="POST">
                     {% csrf_token %}
-                    <button type="submit">Logout</button>
+                    <button class="create_btn" type="submit">Logout</button>
                 </form>
             {% else %}
                 <a href="{% url 'signupuser' %}">Sign Up</a>
