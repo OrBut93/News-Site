@@ -1,11 +1,17 @@
 
 
 {% extends 'NewsSiteProj/base.html' %}
+{% load static %}
 {% block content %}
-    <div class="detail">
-        <h4>{{ post.title }}</h4>
-        <h6>Posted: {{ post.currentDate }}, Category: {{ post.category.name }}, Views: {{ post.viewsCounter }}</h6>
-        <h6>{{ post.description }}</h6>
-    </div>
+    <link rel="stylesheet" href="{% static "NewsSiteProj/../detail.css" %}">
 
+    <div class="detail">
+        <div class="detail_body">
+            <br><br>
+            <h1><b>{{ post.title }}</b></h1>
+            <h6> {{ post.currentDate }} | {{ post.category.name }} | Views: {{ post.viewsCounter }}</h6>
+            <br>
+            <p class="description_p">{{ post.description }}</p>
+        </div>
+    </div>
 {% endblock %}

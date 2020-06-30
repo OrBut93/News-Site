@@ -4,100 +4,139 @@
 {% block content %}
 
     <link rel="stylesheet" href="{% static "NewsSiteProj/../../static/custom.css" %}">
-    <div class="filterBox">
-        <form method="GET" action=".">
+    <div class="container">
+        <div class="filterBox">
+            <form method="GET" action=".">
 
-            <div class="form-row">
-                <div class="form-group col-md-2 col-lg-2">
-                    <label for="inputEmail4">Published from</label>
-                    <input type="date" class="form-control" id="inputEmail4" name="date_min">
-                </div>
-                <div class="form-group col-md-2 col-lg-2">
-                    <label for="inputPassword4">to</label>
-                    <input type="date" class="form-control" id="inputPassword4" name="date_max">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="inputState">Category</label>
-                    <select id="inputState" class="form-control" name="category_field">
-                        <option selected>Choose...</option>
-                        {% for cat in categories %}
-                            <option value="{{ cat }}"> {{ cat }}</option>
-                        {% endfor %}
+                <div class="form-row">
+                    <div class="form-group col-md-2 col-lg-2">
+                        <label for="inputEmail4">Published from</label>
+                        <input type="date" class="form-control" id="inputEmail4" name="date_min">
+                    </div>
+                    <div class="form-group col-md-2 col-lg-2">
+                        <label for="inputPassword4">to</label>
+                        <input type="date" class="form-control" id="inputPassword4" name="date_max">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Category</label>
+                        <select id="inputState" class="form-control" name="category_field">
+                            <option selected>Choose...</option>
+                            {% for cat in categories %}
+                                <option value="{{ cat }}"> {{ cat }}</option>
+                            {% endfor %}
 
-                    </select>
+                        </select>
+                    </div>
+                    <button type="submit" id="searchbtn" class="btn btn-primary">Search</button>
                 </div>
-                <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
 
-    <div class="card-group">#}
-        {% for post in posts %}
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title">{{ post.title }}</h2>
-                            <p>{{ post.currentDate }}, {{ post.category.name }}, {{ post.viewsCounter }}</p>
-                            <h4>{{ post.description|truncatechars:100 }}</h4>
-                            <a href="{% url 'detail' post.id %}" class="btn btn-primary">For more</a>
+        <div class="card-deck">
+            {% for post in posts %}
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 mb-4">
+                        <div class="card mb-3 h-200">
+                            <div class="cardor">
+                                <div class="card card-image  "
+                                     style="background-image: url(https://d3m9l0v76dty0.cloudfront.net/system/photos/3407611/large/7f7aea22c3c884c0ff3e2340ea88bbd9.jpg);width: 100%; max-width: 18rem;">
+
+                                    <!-- Content -->
+                                    <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                                        <div>
+
+                                            <h3 class="card-title pt-2"><strong>{{ post.title }}</strong></h3>
+                                            <h6 class="card-category"><i
+                                                    class="fas fa-chart-pie"></i> {{ post.currentDate }}
+                                                | {{ post.category }}</h6>
+                                            <p class="card-description">{{ post.description|truncatechars:100 }}</p>
+                                            <a id="view-detail" href="{% url 'detail' post.id %}"
+                                               class="btn btn-pink"><i
+                                                    class="fas fa-clone left"></i> Read more</a>
+                                            {% if user.username == 'admin' %}
+                                                <a id="edit-detail" href="{% url 'editpost' post.id %}"
+                                                   class="btn btn-pink"><i
+                                                        class="fas fa-clone left"></i> edit/delete</a>
+
+                                            {% endif %}
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        {% endfor %}
 
+
+
+                {#            <div class="row">#}
+                {#                <div class="col-sm-12">#}
+                {#                    <div class="card">#}
+                {#                        <div class="card-body">#}
+                {#                            <h2 class="card-title">{{ post.title }}</h2>#}
+                {#                            <p>{{ post.currentDate }}, {{ post.category.name }}, {{ post.viewsCounter }}</p>#}
+                {#                            <h4>{{ post.description|truncatechars:100 }}</h4>#}
+                {#                            <a href="{% url 'detail' post.id %}" class="btn btn-primary">For more</a>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
+                {#            </div>#}
+
+            {% endfor %}
+
+        </div>
+
+
+        {#    {% if user.is_authenticated %}#}
+        {##}
+        {#        <div class="postTitle" class="font-weight-bold text-center">News Site</div>#}
+        {#        <br>#}
+        {##}
+
+        {#        <div class="form-group col-md-4">#}
+        {#            <label for="category">Filter by Category</label>#}
+        {#            <select id="category" class="form-control" name="category">#}
+        {#                <option selected>Choose...</option>#}
+        {#                {% for cat in categories %}#}
+        {#                    <option value="{{ cat }}">{{ cat.name }}</option>#}
+        {#                {% endfor %}#}
+        {#            </select>#}
+        {#        </div>#}
+        {##}
+        {##}
+        {#        <div class="card-group">#}
+        {#            {% for post in posts %}#}
+        {##}
+        {#                <div class="row">#}
+        {#                    <div class="col-sm-12">#}
+        {#                        <div class="card">#}
+        {#                            <div class="card-body">#}
+        {#                                <h2 class="card-title">{{ post.title }}</h2>#}
+        {#                                <p>{{ post.currentDate }}, {{ post.category.name }}</p>#}
+        {##}
+        {#                                <h4>{{ post.description|truncatechars:100 }}</h4>#}
+        {#                                <h2 class="card-title">{{ post.bla }}</h2>#}
+        {##}
+        {#                                <a href="{% url 'detail' post.id %}" class="btn btn-primary">For more</a>#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {##}
+        {#            {% endfor %}#}
+        {##}
+        {#        </div>#}
+        {##}
+        {##}
+        {#    {% else %}:#}
+        {#        <div>#}
+        {#            <h1>You have to Login/Sign-Up to see the News!</h1>#}
+        {#        </div>#}
+        {#    {% endif %}#}
     </div>
-
-
-
-    {#    {% if user.is_authenticated %}#}
-    {##}
-    {#        <div class="postTitle" class="font-weight-bold text-center">News Site</div>#}
-    {#        <br>#}
-    {##}
-
-    {#        <div class="form-group col-md-4">#}
-    {#            <label for="category">Filter by Category</label>#}
-    {#            <select id="category" class="form-control" name="category">#}
-    {#                <option selected>Choose...</option>#}
-    {#                {% for cat in categories %}#}
-    {#                    <option value="{{ cat }}">{{ cat.name }}</option>#}
-    {#                {% endfor %}#}
-    {#            </select>#}
-    {#        </div>#}
-    {##}
-    {##}
-    {#        <div class="card-group">#}
-    {#            {% for post in posts %}#}
-    {##}
-    {#                <div class="row">#}
-    {#                    <div class="col-sm-12">#}
-    {#                        <div class="card">#}
-    {#                            <div class="card-body">#}
-    {#                                <h2 class="card-title">{{ post.title }}</h2>#}
-    {#                                <p>{{ post.currentDate }}, {{ post.category.name }}</p>#}
-    {##}
-    {#                                <h4>{{ post.description|truncatechars:100 }}</h4>#}
-    {#                                <h2 class="card-title">{{ post.bla }}</h2>#}
-    {##}
-    {#                                <a href="{% url 'detail' post.id %}" class="btn btn-primary">For more</a>#}
-    {#                            </div>#}
-    {#                        </div>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {##}
-    {#            {% endfor %}#}
-    {##}
-    {#        </div>#}
-    {##}
-    {##}
-    {#    {% else %}:#}
-    {#        <div>#}
-    {#            <h1>You have to Login/Sign-Up to see the News!</h1>#}
-    {#        </div>#}
-    {#    {% endif %}#}
 {% endblock %}
 
 

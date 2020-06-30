@@ -1,0 +1,33 @@
+
+.detail {
+    background-image: url(https://images.unsplash.com/photo-1470219556762-1771e7f9427d?ixlib=rb-1.2.1&w=1000&q=80.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1000px;
+
+}
+
+.detail .detail_body {
+    text-align: center;
+    font-weight: bold;
+}
+
+.detail .detail_body h1 {
+    color: white;
+    -webkit-text-stroke: .07rem gray;
+        font-weight: bold;
+
+}
+
+.detail .detail_body h6 {
+    color: #424040;
+    margin-top: 2rem;
+}
+
+.detail .description_p{
+    font-family: 'Inder', sans-serif;
+    line-height: 28px;
+    margin-bottom: 15px;
+    color: #666;
+}

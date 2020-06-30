@@ -1,0 +1,20 @@
+{% extends 'NewsSiteProj/base.html' %}
+{% block content %}
+    {{ error }}
+    <div class="editpost">
+        <h4>Edit Post</h4>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+
+        <form method="POST" action="{% url 'removepost' post.id %}">
+            {% csrf_token %}
+            <button type="submit">Remove</button>
+        </form>
+    </div>
+
+
+{% endblock %}
