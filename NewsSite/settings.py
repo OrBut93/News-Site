@@ -25,7 +25,7 @@ SECRET_KEY = '%aq9a%-^+n(@iz_yw(^n&ib45afyjxfd^q^$jgora9-05a+euf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['EC2_DNS_NAME']
 
 
 # Application definition
